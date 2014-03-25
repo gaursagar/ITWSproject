@@ -23,7 +23,7 @@ html, body {
 
 
 
-div[id*='b']{
+div[id*='x']{
     width: 6.250em;
     height: 6.250em;
     margin-top: 0.750em;
@@ -34,5 +34,25 @@ div[id*='b']{
     display: flex;
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
+    overflow:hidden;
   }
+
+#counter, #timer
+{
+  font-family:  'Tamoha', 'Hoefler Text', Georgia, 'Times New Roman', serif;
+  font-size: 1.5em;
+  letter-spacing: .2em;
+  line-height: 1.1em;
+  font-weight: 900;
+  margin:0px;
+  text-align: center;
+  text-transform: uppercase; 
+  border-radius: 0.188em;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background: rgba(200, 153, 147, 0.5);
+  margin-left: 2em;
+  float:left;
+}
     
