@@ -3,38 +3,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>Canvas</title>
 	<link rel="stylesheet" href="./styles.css">
-	<script src='jquery.js'></script>
-  	<script src="jquery-csv.js"></script>
-  	<script src ='close-pixelate.js'></script>
+	<script src='../libraries/jquery.js'></script>
+  <script src='../libraries/jquery-csv.js'></script>
+  <script src ='../libraries/close-pixelate.js'></script>
 </head>
 
 <body>
 	<h1>Picture Quiz</h1>
-	<figure id = "questionImage">
-          <img id="officer" class="portrait" src="img/officer.jpg" alt="Chinese officer @ Shanghai downtown market by Dusan Simonovic" />
-    </figure>
-    <article id = "options">
-    </article>
+	<figure id = "questionImage"></figure>
+  <article id = "options"></article>
 </body>
-  <script src = "picturequiz.js"></script>
-  <!--<script>var pixelations = {
-      'officer' : [
-        { shape : 'circle', resolution : 8, size: 6 }
-      ]
-    };
 
- function init() 
- {
-    for ( var key in pixelations ) 
-    {
-      var img = document.getElementById( key ),
-      options = pixelations[key];
-      if ( img ) 
-      { 
-        img.closePixelate( options )
-      }
-  }
-}
-window.addEventListener( 'load', init, false);
-</script>-->
+  <script src = "js/picturequiz.js"></script>
+
 </HTML>
