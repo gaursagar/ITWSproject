@@ -1,5 +1,11 @@
 document.addEventListener("load", readTextFile("data/data.csv"))
 
+var correct = 0
+var incorrect = 0
+var attempted = 0
+var totalhints = 0
+var score = 0
+
 var pixelations1 = 
 {
       '1' : [
@@ -7,7 +13,9 @@ var pixelations1 =
           { shape: 'circle', resolution: 20, size: 19, offset: 0, alpha: 0.991 }
       ],
       '2' : [
-          { shape: 'diamond', resolution: 22, size: 200, offset: 0, alpha: 0.991 }
+          { shape : 'square', resolution : 48 },
+          { shape : 'diamond', resolution : 12, size: 8 },
+          { shape : 'diamond', resolution : 12, size: 8, offset : 6 },
       ],
       '3' : [
         { resolution: 96 },
@@ -23,9 +31,8 @@ var pixelations1 =
         { shape: 'circle', resolution: 50, size: 11, offset: 8, alpha: 0.441 }
       ],
       '5' : [
-        { shape: 'diamond', resolution: 16, size: 27, offset: 0, alpha: 0.561 },
-        { shape: 'diamond', resolution: 32, size: 30, offset: 59, alpha: 0.501 }
-      ],
+        { shape: 'square', resolution: 32, size: 30, offset: 0, alpha: 0.561 },
+        { shape: 'diamond', resolution: 32, size: 20, offset: 5, alpha: 0.501 }],
       '6' : [
         { shape: 'diamond', resolution: 24, size: 25 },
         { shape: 'diamond', resolution: 24, offset: 12 },
@@ -56,34 +63,84 @@ var pixelations1 =
       ]
 }
 
+var pixelations2 = 
+{
+      '1' : [
+          { shape: 'diamond', resolution: 16, size: 200, offset: 0, alpha: 0.991 },
+          { shape: 'circle', resolution: 16, size: 19, offset: 0, alpha: 0.991 }
+      ],
+      '2' : [
+          { shape : 'square', resolution : 24 },
+          { shape : 'diamond', resolution : 12, size: 8 },
+      ],
+      '3' : [
+          { shape : 'circle', resolution : 20, offset: 4 },
+          { shape : 'circle', resolution : 32, size: 26, offset: 13 },
+      ],
+      '4' : [
+          { shape: 'diamond', resolution: 14, size: 27, offset: 15, alpha: 0.991 },
+          { shape: 'circle', resolution: 20, size: 48, offset: 0, alpha: 0.651 },
+      ],
+      '5' : [
+        { shape: 'square', resolution: 24, size: 30, offset: 0, alpha: 1 },
+        { shape: 'diamond', resolution: 24, size: 20, offset: 5, alpha: 1 }
+      ],
+      '6' : [
+          { shape: 'diamond', resolution: 16, size: 0 },
+          { shape: 'diamond', resolution: 20, offset: 5 },
+      ],
+      '7' : [
+          { shape: 'square', resolution: 4 },
+          { shape: 'circle', resolution: 24, offset: 16 },
+          { shape: 'circle', resolution: 24, offset: 0, alpha: 0.5 },
+      ],
+      '8' : [        
+          { shape: 'circle', resolution: 32, size: 180, offset: 0, alpha: 0.241 },
+          { shape: 'diamond', resolution: 8, size: 10, offset: 0, alpha: 0.391 },
+      ],
+      '9' : [
+        { shape : 'square', resolution : 20, offset: 24 },
+        { shape : 'circle', resolution : 20, offset : 0 },
+      ],
+      '10' : [
+        { shape : 'square', resolution : 24 },
+        { shape : 'diamond', resolution : 12, size: 8 },
+      ]
+}
+
 function resetPage(dataArray)
 {
   var imageNumber = Math.floor((Math.random()*15)+1) + ''
+  document.getElementById('attempted').innerHTML = attempted
+  document.getElementById('correct').innerHTML = correct
+  var score = (correct * 25) - (5 * totalhints)
+  document.getElementById('score').innerHTML = score
   document.getElementById('questionspace').innerHTML = dataArray[imageNumber-1][0]
   document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" />'
   //console.log(imageNumber)
-  document.getElementById('options').innerHTML = '<div id = option1>'+dataArray[imageNumber-1][1]+'</div><div id = option2>'+dataArray[imageNumber][2]+'</div><div id = option3>'+dataArray[imageNumber][3]+'</div><div id = option4>'+dataArray[imageNumber][4]+'</div>'
+  document.getElementById('options').innerHTML = '<div id = option1>'+dataArray[imageNumber-1][1]+'</div><div id = option2>'+dataArray[imageNumber-1][2]+'</div><div id = option3>'+dataArray[imageNumber-1][3]+'</div><div id = option4>'+dataArray[imageNumber-1][4]+'</div>'
   var image = new Image()
   image.src = 'img/'+imageNumber+'.jpg'
-  image.onload = function(){pixelate(dataArray,imageNumber)}
+  key = Math.floor((Math.random()*10)+1) + ''
+  image.onload = function(){pixelate(pixelations1,key)}
+  attempted ++
+  checkcorrect(dataArray,imageNumber,key)
 }
 
-function pixelate(dataArray,imageNumber) 
+function pixelate(pixelations,key)
 {
   var img = document.getElementById('questionimage')
-  key = Math.floor((Math.random()*10)+1) + ''
-  options = pixelations1[key]
+  options = pixelations[key]
   //console.log(key)  
   if ( img ) 
   { 
     img.closePixelate(options)
   }
-  checkcorrect(dataArray,imageNumber)
 }
 
 function checkcorrect(dataArray,imageNumber)
 {
-  var totalcorrect = 0
+  var hints = 0
 $(document.body).click(function(evt){
         var clicked = evt.target
         console.log(evt.target.id)
@@ -94,12 +151,32 @@ $(document.body).click(function(evt){
            if(currentID == dataArray[imageNumber-1][5])
            {
               console.log("correct")
-              totalcorrect++
+              correct++
             }
             else
+            {
+              incorrect++
               console.log("incorrect")
+            }
             $(document.body).off('click');
+            totalhints = totalhints + hints
             resetPage(dataArray)
+        }
+        if((currentID == "clear")&&(hints == 0))
+        {
+          hints++
+          document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" />'
+          var image = new Image()
+          image.src = 'img/'+imageNumber+'.jpg'
+          image.onload = function(){pixelate(pixelations2,key)}
+          currentID = ""
+        }
+
+        if((currentID == "clear")&&(hints == 1))
+        {
+          hints = hints + 2
+          document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" />'
+          currentID = ""
         }
     })
 }
