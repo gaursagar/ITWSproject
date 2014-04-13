@@ -16,7 +16,6 @@ function resetPage(dataArray)
     document.getElementById("x9").style.background = "rgba(102, 153, 147, 0.5)"
     
     document.getElementById("timer").innerHTML ="Start"
-    document.getElementById("question").innerHTML = ""
     document.getElementById("x1").innerHTML =""
     document.getElementById("x2").innerHTML =""
     document.getElementById("x3").innerHTML =""
@@ -39,7 +38,7 @@ function resetPage(dataArray)
 
 function shuffle(o)
 {
-    for(var j, x, i = o.length-1; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o
 }
 
@@ -51,16 +50,16 @@ function writeText(dataArray)
     shuffledText = correctText.slice(0)
     shuffledText = shuffle(shuffledText)
     console.log(shuffledText)
-    document.getElementById("question").innerHTML =shuffledText[9]
-    document.getElementById("x1").innerHTML =shuffledText[0]
-    document.getElementById("x2").innerHTML =shuffledText[1]
-    document.getElementById("x3").innerHTML =shuffledText[2]
-    document.getElementById("x4").innerHTML =shuffledText[3]
-    document.getElementById("x5").innerHTML =shuffledText[4]
-    document.getElementById("x6").innerHTML =shuffledText[5]
-    document.getElementById("x7").innerHTML =shuffledText[6]
-    document.getElementById("x8").innerHTML =shuffledText[7]
-    document.getElementById("x9").innerHTML =shuffledText[8]
+    document.getElementById("question").innerHTML =shuffledText[0]
+    document.getElementById("x1").innerHTML =shuffledText[1]
+    document.getElementById("x2").innerHTML =shuffledText[2]
+    document.getElementById("x3").innerHTML =shuffledText[3]
+    document.getElementById("x4").innerHTML =shuffledText[4]
+    document.getElementById("x5").innerHTML =shuffledText[5]
+    document.getElementById("x6").innerHTML =shuffledText[6]
+    document.getElementById("x7").innerHTML =shuffledText[7]
+    document.getElementById("x8").innerHTML =shuffledText[8]
+    document.getElementById("x9").innerHTML =shuffledText[9]
 
     timesClicked = 0
     if(timesClicked == 0)

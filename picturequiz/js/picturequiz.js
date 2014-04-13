@@ -1,6 +1,6 @@
-document.addEventListener("load", readTextFile("file:///ug/ug2k13/cnd/sagar.gaur/scratchpad/picturequiz/data/data.csv"))
+document.addEventListener("load", readTextFile("data/data.csv"))
 
-var pixelations = 
+var pixelations1 = 
 {
       '1' : [
           { shape: 'diamond', resolution: 98, size: 200, offset: 0, alpha: 0.991 },
@@ -58,29 +58,50 @@ var pixelations =
 
 function resetPage(dataArray)
 {
-  var imageNumber = Math.floor((Math.random()*10)+1) + ''
+  var imageNumber = Math.floor((Math.random()*15)+1) + ''
+  document.getElementById('questionspace').innerHTML = dataArray[imageNumber-1][0]
+  document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" />'
   //console.log(imageNumber)
-  document.getElementById('questionImage').innerHTML = '<img id="image" src="img/'+imageNumber+'.jpg" />'
-  document.getElementById('options').innerHTML = '<div id = option1>'+dataArray[imageNumber-1][1]+'</div><div id = option1>'+dataArray[imageNumber][2]+'</div><div id = option1>'+dataArray[imageNumber][3]+'</div><div id = option1>'+dataArray[imageNumber][4]+'</div>'
-  //while(document.readyState != 'complete')
-    //console.log('123')
+  document.getElementById('options').innerHTML = '<div id = option1>'+dataArray[imageNumber-1][1]+'</div><div id = option2>'+dataArray[imageNumber][2]+'</div><div id = option3>'+dataArray[imageNumber][3]+'</div><div id = option4>'+dataArray[imageNumber][4]+'</div>'
   var image = new Image()
   image.src = 'img/'+imageNumber+'.jpg'
-  image.onload = function() {//console.log("loaded");
-  pixelate()}
+  image.onload = function(){pixelate(dataArray,imageNumber)}
 }
 
-function pixelate() 
+function pixelate(dataArray,imageNumber) 
 {
-  var img = document.getElementById('image')
+  var img = document.getElementById('questionimage')
   key = Math.floor((Math.random()*10)+1) + ''
-  options = pixelations[key]
-  console.log(key)
-  
+  options = pixelations1[key]
+  //console.log(key)  
   if ( img ) 
   { 
-    img.closePixelate( options )
+    img.closePixelate(options)
   }
+  checkcorrect(dataArray,imageNumber)
+}
+
+function checkcorrect(dataArray,imageNumber)
+{
+  var totalcorrect = 0
+$(document.body).click(function(evt){
+        var clicked = evt.target
+        console.log(evt.target.id)
+        console.log(dataArray[imageNumber-1][5])
+        var currentID = clicked.id
+        if(currentID[0] == "o")
+        {
+           if(currentID == dataArray[imageNumber-1][5])
+           {
+              console.log("correct")
+              totalcorrect++
+            }
+            else
+              console.log("incorrect")
+            $(document.body).off('click');
+            resetPage(dataArray)
+        }
+    })
 }
 
 function readTextFile(file)
