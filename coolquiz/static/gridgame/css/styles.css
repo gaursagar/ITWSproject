@@ -1,0 +1,58 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #111111;
+  color: #FFFFFF;
+  font-family:  'Tamoha', 'Hoefler Text', Georgia, 'Times New Roman', serif;
+  font-size: 25px;
+  letter-spacing: .2em;
+  line-height: 1.1em;
+  font-weight: 900;
+  margin:0px;
+  text-align: center;
+  text-transform: uppercase; 
+}
+
+.grid-container {
+  margin-top: 2.5em;
+    margin-left: 35em;
+    width: 21.875em;
+    height: 21.875em;
+    background: rgba(8, 51, 107, 0.8);
+  }
+
+
+
+div[id*='x']{
+    width: 6.250em;
+    height: 6.250em;
+    margin-top: 0.750em;
+    margin-left: 0.750em;
+    float: left;
+    border-radius: 0.188em;
+    background: rgba(102, 153, 147, 0.5);
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    overflow:hidden;
+  }
+
+#counter, #timer
+{
+  font-family:  'Tamoha', 'Hoefler Text', Georgia, 'Times New Roman', serif;
+  font-size: 1.5em;
+  letter-spacing: .2em;
+  line-height: 1.1em;
+  font-weight: 900;
+  margin:0px;
+  text-align: center;
+  text-transform: uppercase; 
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background: rgba(200, 153, 147, 0.5);
+  margin-left: 2em;
+  float:left;
+}
+    

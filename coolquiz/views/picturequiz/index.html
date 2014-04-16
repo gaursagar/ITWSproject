@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Canvas</title>
+	{{response.files.append(URL('static','css/picturequiz.css'))}}
+  {{include 'web2py_ajax.html'}}
+  <script src="{{=URL('static','libraries/jquery-csv.js')}}"></script>
+  <script src="{{=URL('static','libraries/close-pixelate.js')}}"></script>
+</head>
+
+<body>
+	<h1>Picture Quiz</h1>
+	<div class = "text">
+		<div id = "questionspace"></div>
+	</div>
+	<div id = "imagespace"></div>
+  	<div id = "options"></div>
+  	<div id = "clear">Clear</div>
+  	<div class = "stats">
+  		<div id = "attempted"></div>
+  		<div id = "correct"></div>
+  		<div id = "score"></div>
+  	</div>
+</body>
+<script src="{{=URL('static','js/picturequiz.js')}}"></script>
+
+
+</HTML>
