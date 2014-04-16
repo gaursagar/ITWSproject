@@ -1,0 +1,39 @@
+<html>
+        <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso 8859-1" />
+        </head>
+        <body>
+          <input id="text" type="text" size="60" value="Type your text here" />
+          <input type="button" value="When typing whatever text display the div balise on the page" onclick="check();" />
+          <div id="level0"></div>
+
+          <script type="text/javascript">
+
+       function check() {
+    var div = document.getElementById("level0");
+    div.innerHTML = "Score : <br>" + document.getElementById("text").value;
+    document.getElementById("level0").style.display = 'block';
+}
+
+          </script>
+          
+          <style>
+    #level0 {
+    display: none;
+    width: 300px;
+    height: 200px;
+    //line-height: 200px;
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    background-color: #848484;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+    }
+          </style>
+
+        </body>
+      </html>

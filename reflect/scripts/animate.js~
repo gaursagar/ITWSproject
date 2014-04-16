@@ -1,0 +1,215 @@
+	var ww;
+	var wh; 
+	var n;
+	var turns;
+	var turns1;
+	var blueCircleAnimation;
+	var flag;
+	var flag1;
+	var flag2;
+	var count;
+	var moveHorizontalDiv1;
+	var moveHorizontalDiv2;
+	var moveVerticalDiv1;
+	var moveVerticalDiv2;
+	var flagPause;
+	var mult;
+	var flag3;
+	var high=0;
+
+function init() {
+	ww = 750;
+	wh = 400; 
+	n = Math.floor((Math.random()*10)+1);
+	n=n%5;
+	n=n+4;
+	turns = ww/n
+	turns1 = wh/75
+	blueCircleAnimation = null
+	n = Math.floor((Math.random()*10)+1);
+	n=n%2
+	flag=n;
+	flag1=0;
+	flag2=0;
+	flag3=0;
+	count=0;
+	moveHorizontalDiv1 = document.getElementById("movingHorizontalDiv1");
+	moveHorizontalDiv2 = document.getElementById("movingHorizontalDiv2");
+	moveVerticalDiv1 = document.getElementById("movingVerticalDiv1");
+	moveVerticalDiv2 = document.getElementById("movingVerticalDiv2");
+	flagPause=0;
+	mult=2;
+}
+
+function check() {
+    var div = document.getElementById("level0");
+    div.innerHTML = "<br>Score :<br>" + count + "<br><br><a style='display:block' href=''><div id='xyz' onclick='animateBlueCircle();'>Play Again</div></a><br>";
+    document.getElementById("level0").style.display = 'block';
+    if(high<count) high=count;
+    console.log(high);
+}
+
+function animateBlueCircle() 
+{
+	var div = document.getElementById("box");
+    div.innerHTML = "<style='color:#A9E2F3;'>Score : " + count;
+    var circle = document.getElementById("circle-blue")
+    var pos = turns * mult  
+    var cw = circle.scrollWidth
+    circle.style.left = pos + "px"
+    var pos1 = turns1 * mult
+    circle.style.top = pos1 + "px"
+    
+    if (flag==0 && flag1==0) // Right-Down
+    {
+    	if(pos1 + cw + 6 < wh && pos + cw + 6 < ww) 
+    	{
+        	if(flag2==0) blueCircleAnimation = requestAnimationFrame(animateBlueCircle)
+    	}
+    	else if(pos + cw + 6 >= ww)
+    	{
+    		if(((parseInt(moveVerticalDiv2.style.top, 10)<=pos1) && (parseInt(moveVerticalDiv2.style.top, 10)+150>=pos1)))
+        	{flag=1; flag1=0; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+        	else
+	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
+	    }
+	    else
+	    {
+	    	if(((parseInt(moveHorizontalDiv2.style.left, 10)<=pos) && (parseInt(moveHorizontalDiv2.style.left, 10)+150>=pos)))
+	    	{flag=0; flag1=1; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	    	else
+	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
+	    }
+    } 
+    else if(flag==1 && flag1==0) // Left-Down
+    {
+	    if(pos > 6 && pos1 + cw + 6 < wh)
+	    {   
+	        if(flag2==0) blueCircleAnimation = requestAnimationFrame(animateBlueCircle)
+	    }
+	    else if(pos1 + cw + 6 >= wh)
+	    {
+	    	if(((parseInt(moveHorizontalDiv2.style.left, 10)<=pos) && (parseInt(moveHorizontalDiv2.style.left, 10)+150>=pos)))
+	        {flag=1; flag1=1; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	        else
+	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
+	    }
+	    else
+	    {
+	    	if(((parseInt(moveVerticalDiv1.style.top, 10)<=pos1) && (parseInt(moveVerticalDiv1.style.top, 10)+150>=pos1)))
+	    	{flag=0; flag1=0; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	    	else
+	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
+	    }
+    }
+    else if(flag==1 && flag1==1) // Left-Up
+    {
+	    if(pos1 > 6 && pos > 6)
+	    {   
+	        if(flag2==0) blueCircleAnimation = requestAnimationFrame(animateBlueCircle)
+	    }
+	    else if(pos <= 6)
+	    {
+	    	if(((parseInt(moveVerticalDiv1.style.top, 10)<=pos1) && (parseInt(moveVerticalDiv1.style.top, 10)+150>=pos1)))
+	        {flag=0; flag1=1; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	        else
+	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
+	    }
+	    else
+	    {
+	    	if(((parseInt(moveHorizontalDiv1.style.left, 10)<=pos) && (parseInt(moveHorizontalDiv1.style.left, 10)+150>=pos)))
+	    	{flag=1; flag1=0; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	    	else
+	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
+	    }
+    }
+    else if(flag==0 && flag1==1)
+    {
+	    if(pos1 > 6 && pos + cw + 6 < ww)
+	    {   
+	        if(flag2==0) blueCircleAnimation = requestAnimationFrame(animateBlueCircle)
+	    }
+	    else if(pos1 <= 6)
+	    {
+	    	if(((parseInt(moveHorizontalDiv1.style.left, 10)<=pos) && (parseInt(moveHorizontalDiv1.style.left, 10)+150>=pos)))
+	        {flag=0; flag1=0; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	        else
+	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
+	    }
+	    else
+	    {
+	    	if(((parseInt(moveVerticalDiv2.style.top, 10)<=pos1) && (parseInt(moveVerticalDiv2.style.top, 10)+150>=pos1)))
+	    	{flag=1; flag1=1; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	    	else
+	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
+	    }
+    } 
+    
+    if(flag==0 && flag1==0) {++turns; ++turns1;}
+    if(flag==1 && flag1==0) {--turns; ++turns1;}
+    if(flag==1 && flag1==1) {--turns; --turns1;}
+    if(flag==0 && flag1==1) {++turns; --turns1;}
+}
+
+function animate() {
+    animateBlueCircle()
+}
+
+function main() {
+	init();
+	document.getElementById("circle-blue").style.display = 'block';
+    if (window.requestAnimationFrame) requestAnimationFrame(animate)
+}
+
+window.onload = function () {
+			
+			window.onkeydown = function(e) {
+		
+				e.preventDefault();
+				if (!e)
+				{
+					e = window.event;
+				}
+				var keyCode;
+				// pixel wise speed variable
+				var speed = 30;       
+				if(e.which) {
+					keyCode = e.which;
+				} else {
+					keyCode = e.keyCode;
+				}
+			if(flag2==0)
+			{
+		//increment/decrement the top or left of the div based on the arrow key movements
+				if(keyCode === 37 && (parseInt(moveHorizontalDiv1.style.left, 10) - speed + 10)>0) {
+					moveHorizontalDiv1.style.left = (parseInt(moveHorizontalDiv1.style.left, 10) - speed) + 'px';
+					moveHorizontalDiv2.style.left = (parseInt(moveHorizontalDiv2.style.left, 10) - speed) + 'px';
+				} else if (keyCode === 38 && (parseInt(moveVerticalDiv1.style.top, 10) - speed + 4)>0) {
+					moveVerticalDiv1.style.top = (parseInt(moveVerticalDiv1.style.top, 10) - speed - 1) + 'px';
+					moveVerticalDiv2.style.top = (parseInt(moveVerticalDiv2.style.top, 10) - speed - 1) + 'px';
+				} else if (keyCode === 39 && (parseInt(moveHorizontalDiv1.style.left, 10) + speed - 10)+150<750) {
+					moveHorizontalDiv1.style.left = (parseInt(moveHorizontalDiv1.style.left, 10) + speed) + 'px';
+					moveHorizontalDiv2.style.left = (parseInt(moveHorizontalDiv2.style.left, 10) + speed) + 'px';
+				} else if (keyCode === 40 && (parseInt(moveVerticalDiv1.style.top, 10) + speed - 6)+150<400) {
+					moveVerticalDiv1.style.top = (parseInt(moveVerticalDiv1.style.top, 10) + speed + 1) + 'px';
+					moveVerticalDiv2.style.top = (parseInt(moveVerticalDiv2.style.top, 10) + speed + 1) + 'px';
+				}
+			}
+			};
+		};
+
+function toggle() {
+	if(flag2==0) 
+	{
+		document.getElementById("pause-resume").value='Resume'; 
+		document.getElementById("pause-resume").style.padding = "33px 10px 33px 10px";
+		flag2=1;
+	} 
+	else 
+	{
+		document.getElementById("pause-resume").value='Pause'; 
+		document.getElementById("pause-resume").style.padding = "33px 25px 33px 25px";
+		flag2=0; 
+		animateBlueCircle();
+	}
+}		
