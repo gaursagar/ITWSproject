@@ -5,6 +5,8 @@ var incorrect = 0
 var attempted = 0
 var totalhints = 0
 var score = 0
+var flag = 0
+var asked = new Array()
 
 var pixelations1 = 
 {
@@ -63,7 +65,7 @@ var pixelations1 =
       ]
 }
 
-var pixelations2 = 
+/*var pixelations2 = 
 {
       '1' : [
           { shape: 'diamond', resolution: 16, size: 200, offset: 0, alpha: 0.991 },
@@ -107,78 +109,115 @@ var pixelations2 =
         { shape : 'diamond', resolution : 12, size: 8 },
       ]
 }
+*/
+function scoreflash()
+{
+  console.log("here")
+  document.scoreform.score.value = score;
+  var div = document.getElementById('form')
+  div.innerHTML = div.innerHTML + '<input id="bigbutton" type="submit" value="Big Button That Needs Clicking" />YOU LOSE' 
+}
+
+function randomindex(dataArray)
+{
+
+    randomno = Math.floor(Math.random() * dataArray.length + 1)
+    while (asked.indexOf (randomno) != -1)
+    {
+        console.log("randomgen")
+        if (asked.indexOf (randomno) == -1)
+        {
+            break
+        }
+        else
+            randomno = Math.floor(Math.random() * dataArray.length + 1)
+    }
+    asked.push(randomno)
+    return randomno
+}
 
 function resetPage(dataArray)
 {
-  var imageNumber = Math.floor((Math.random()*15)+1) + ''
+  console.log(dataArray.length + "LENTH" + asked.length) 
+  if ((attempted - correct == 50) || (asked.length == dataArray.length-1))
+  {
+    //End game
+    flag = 1
+    scoreflash()
+  }
+  var imageNumber = randomindex(dataArray)
   document.getElementById('attempted').innerHTML = attempted
   document.getElementById('correct').innerHTML = correct
-  var score = (correct * 25) - (5 * totalhints)
+  score = (correct * 25) - (5 * totalhints)
   document.getElementById('score').innerHTML = score
   document.getElementById('questionspace').innerHTML = dataArray[imageNumber-1][0]
-  document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" />'
+  document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" width="550px" height="400px"/>'
   //console.log(imageNumber)
-  document.getElementById('options').innerHTML = '<div id = option1>'+dataArray[imageNumber-1][1]+'</div><div id = option2>'+dataArray[imageNumber-1][2]+'</div><div id = option3>'+dataArray[imageNumber-1][3]+'</div><div id = option4>'+dataArray[imageNumber-1][4]+'</div>'
+  document.getElementById('options').innerHTML = '<tr><div id = option1>'+dataArray[imageNumber-1][1]+'</div></tr><tr><div id = option2>'+dataArray[imageNumber-1][2]+'</div ></tr><tr><div id = option3>'+dataArray[imageNumber-1][3]+'</div ></tr><tr><div id = option4>'+dataArray[imageNumber-1][4]+'</div></tr>'
   var image = new Image()
   image.src = 'img/'+imageNumber+'.jpg'
   key = Math.floor((Math.random()*10)+1) + ''
-  image.onload = function(){pixelate(pixelations1,key)}
+  image.onload = function(){pixelate(pixelations1,key,imageNumber)}
   attempted ++
+  image.src = 'img/'+imageNumber+'.jpg'
   checkcorrect(dataArray,imageNumber,key)
 }
 
-function pixelate(pixelations,key)
+function pixelate(pixelations,key,imageNumber)
 {
   var img = document.getElementById('questionimage')
   options = pixelations[key]
-  //console.log(key)  
-  if ( img ) 
-  { 
-    img.closePixelate(options)
-  }
+  //console.log("loaded")
+  var image = new Image()
+  image.src = 'img/'+imageNumber+'.jpg'
+  image.onload = function(){img.closePixelate(options)}
+    console.log("round")
 }
 
 function checkcorrect(dataArray,imageNumber)
 {
   var hints = 0
+  if (flag==0)
+  {
 $(document.body).click(function(evt){
+
         var clicked = evt.target
-        console.log(evt.target.id)
-        console.log(dataArray[imageNumber-1][5])
+        //console.log(evt.target.id)
+        //console.log(dataArray[imageNumber-1][5])
         var currentID = clicked.id
         if(currentID[0] == "o")
         {
            if(currentID == dataArray[imageNumber-1][5])
            {
-              console.log("correct")
+              //console.log("correct")
               correct++
             }
             else
             {
               incorrect++
-              console.log("incorrect")
+              //console.log("incorrect")
             }
             $(document.body).off('click');
             totalhints = totalhints + hints
             resetPage(dataArray)
         }
-        if((currentID == "clear")&&(hints == 0))
+        /*if((currentID == "clear")&&(hints == 0))
         {
           hints++
-          document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" />'
+          document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" width="500px" height="400px"/>'
           var image = new Image()
           image.src = 'img/'+imageNumber+'.jpg'
-          image.onload = function(){pixelate(pixelations2,key)}
+          image.onload = function(){pixelate(pixelations2,key,imageNumber)}
           currentID = ""
-        }
+        }*/
 
-        if((currentID == "clear")&&(hints == 1))
+        if((currentID == "clear")&&(hints == 0))
         {
-          hints = hints + 2
-          document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" />'
+          hints = hints + 1
+          document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" width="500px" height="400px"/>'
           currentID = ""
         }
-    })
+    })}
 }
 
 function readTextFile(file)
@@ -192,7 +231,7 @@ function readTextFile(file)
       if(rawFile.status === 200 || rawFile.status == 0)
       {
         data = rawFile.responseText;
-        console.log("Successfully Read")
+        //console.log("Successfully Read")
         readBeta(data)
       }
     }

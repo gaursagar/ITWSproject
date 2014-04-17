@@ -53,3 +53,33 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
+timestamp: 2014-04-16T18:49:21.420543
+CREATE TABLE scoretable(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username CHAR(512),
+    gridgame INTEGER,
+    picturequiz INTEGER,
+    reflect INTEGER
+);
+success!
+timestamp: 2014-04-16T19:01:44.132286
+CREATE TABLE gridgame(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username CHAR(512),
+    score INTEGER
+);
+success!
+timestamp: 2014-04-16T19:01:44.302478
+CREATE TABLE reflect(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username CHAR(512),
+    score INTEGER
+);
+success!
+timestamp: 2014-04-16T19:01:44.392978
+CREATE TABLE picturequiz(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username CHAR(512),
+    score INTEGER
+);
+success!

@@ -1,5 +1,5 @@
 {{extend 'customlayout.html'}}
-<body>
+{{response.files.append(URL('static','css/mainpage.css'))}}
     <div class="darkbody"></div>
 			<div id="tline"></div>
 	<div id="container">
@@ -33,13 +33,13 @@
         		<li class="list">
         			<div class="ans">
         				<span></span>
-        				<span class="anstext">4x Paddle</span>
+                        <span class="anstext"><a href="{{=URL('static', 'reflect/html/animate.html')}}">Reflect</a></span>
         			</div>
         		</li>
         		<li class="list">
         			<div class="ans">
         				<span></span>
-        				<span class="anstext">Laga tukka</span>
+                        <span class="anstext"><a href="{{=URL('scores.html')}}">Scores</a></span>
         			</div>
         		</li>
         		<li class="list" id="talk">
@@ -82,8 +82,7 @@
      
         <footer>
             <div id="footer">
-                <div id="by">ITWS-2 Project by Sagar,Anveshi and Arjun
-                </div>
+                <div id="by">sagar, anveshi, arjun</div>
                 <div id="about">What is this?</div>
             </div>
         </footer>

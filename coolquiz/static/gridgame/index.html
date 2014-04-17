@@ -6,10 +6,17 @@
 </head>
 
 <body>
+	<a href="../../mainpage">Go Back</a>
 	<div class = "stats">
 		<div id = "counter">0</div>
 		<div id = "timer">Start</div>
 	</div>
+	<div class = "stats">
+  		Correct:<div id = "correct">0</div>
+  		Incorrect:<div id = "incorrect">0</div>
+  		Totaltime:<div id = "totaltime">0</div>
+  		<div id = "pass">Pass</div>
+  	</div>
 	<br>
 	<div id = "question"></div>
 	<div class="grid-container">
@@ -31,6 +38,10 @@
 			<div class="cell" id="x9"></div>
 		</div>
 	</table>
+	<form name = "scoreform" action="../../mainpage" method = "get" id = "form">
+      <input type="hidden" name="game" value="gridgame" />
+      <input type="hidden" name="score" value="0" />
+    </form>
 </body>
   <script src='../libraries/jquery.js'></script>
   <script src='../libraries/jquery-csv.js'></script>

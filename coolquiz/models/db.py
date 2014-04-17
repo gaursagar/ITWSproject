@@ -62,7 +62,18 @@ auth.settings.reset_password_requires_verification = True
 ## register with janrain.com, write your domain:api_key in private/janrain.key
 from gluon.contrib.login_methods.rpx_account import use_janrain
 use_janrain(auth, filename='private/janrain.key')
-
+db.auth_user.last_name.writable = False;
+db.auth_user.last_name.readable = False;
+check = lambda x:x.first_name if x else None
+db.define_table('gridgame',
+                Field('username',default = check(auth.user)),
+                Field('score','integer'))
+db.define_table('reflect',
+                Field('username',default = check(auth.user)),
+                Field('score','integer'))
+db.define_table('picturequiz',
+                Field('username',default = check(auth.user)),
+                Field('score','integer'))
 #########################################################################
 ## Define your tables below (or better in another model file) for example
 ##

@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #111111;
+  color: #FFFFFF;
+  font-family:  'Tamoha', 'Hoefler Text', Georgia, 'Times New Roman', serif;
+  font-size: 25px;
+  letter-spacing: .2em;
+  line-height: 1.1em;
+  font-weight: 900;
+  margin:0px;
+  text-align: center;
+}
+
+#textspace {
+  background: rgba(102, 153, 147, 0.5);
+    justify-content: left; /* align horizontal */
+    align-items: left; /* align vertical */
+    overflow:hidden;
+    font-weight: 900;
+}
+
+#options {
+  background: rgba(1, 1, 1, 0.5);
+    justify-content: left; /* align horizontal */
+    align-items: left; /* align vertical */
+    font-weight: 900;
+}
+
+#questionimage {
+  
+}

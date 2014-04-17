@@ -1,10 +1,32 @@
 document.addEventListener("load", readTextFile("data/data.csv"))
 
+var score = 0
+var correct = 0
+var incorrect = 0
+var time = 0
+var totaltime = 0
+var asked = new Array()
+
+function scoreflash()
+{
+  alert("finished")
+  console.log(correct)
+  console.log(incorrect)
+  console.log(totaltime)
+  score = (20*correct - Math.floor(parseInt(totaltime))- 5*incorrect)
+  document.scoreform.score.value = score;
+  var div = document.getElementById('form')
+  div.innerHTML = div.innerHTML + '<input id="bigbutton" type="submit" value="Big Button That Needs Clicking" />YOU LOSE' 
+}
+
 function resetPage(dataArray)
 {
+
     document.getElementById("counter").innerHTML = "0"
     clearInterval(window.timerID)
     clearInterval(window.flashfunction)
+    if ((incorrect == 3) || (asked.length == dataArray.length))
+        scoreflash()
     document.getElementById("x1").style.background = "rgba(102, 153, 147, 0.5)"
     document.getElementById("x2").style.background = "rgba(102, 153, 147, 0.5)"
     document.getElementById("x3").style.background = "rgba(102, 153, 147, 0.5)"
@@ -31,7 +53,6 @@ function resetPage(dataArray)
     {
         if(evt.target.id == "timer")
         {
-            //writeText(dataArray[Math.random() * dataArray.length])
             writeText(dataArray)
         }
     })
@@ -43,14 +64,36 @@ function shuffle(o)
     return o
 }
 
+function randomindex(dataArray)
+{
+
+    randomno = Math.floor(Math.random() * dataArray.length + 0)
+    while (asked.indexOf (randomno) != -1)
+    {
+        console.log("randomgen")
+        if (asked.indexOf (randomno) == -1)
+        {
+            break
+        }
+        else
+            randomno = Math.floor(Math.random() * dataArray.length + 0)
+    }
+    asked.push(randomno)
+    return randomno
+}
+
 function writeText(dataArray)
 {
     //console.log(dataArray)
     $(document.body).off('click')
-    correctText = dataArray[Math.floor(Math.random() * dataArray.length + 0)]
+    //correctText = dataArray[Math.floor(Math.random() * dataArray.length + 0)]
+    correctText = dataArray[randomindex(dataArray)]
     shuffledText = correctText.slice(0)
     shuffledText = shuffle(shuffledText)
     console.log(shuffledText)
+    document.getElementById('incorrect').innerHTML = incorrect
+    document.getElementById('correct').innerHTML = correct
+    document.getElementById('totaltime').innerHTML = totaltime
     document.getElementById("question").innerHTML =shuffledText[9]
     document.getElementById("x1").innerHTML =shuffledText[0]
     document.getElementById("x2").innerHTML =shuffledText[1]
@@ -68,7 +111,8 @@ function writeText(dataArray)
         var start = new Date;
         window.timerID = setInterval(function()
         {   
-            $('#timer').text(((new Date - start) / 1000).toFixed(2));
+            time = ((new Date - start) / 1000).toFixed(2)
+            $('#timer').text(time);
         }, 50);
     }
 
@@ -90,19 +134,28 @@ function writeText(dataArray)
                 document.getElementById(currentID).style.background = "rgba(212, 63, 87, 0.5)"
             },100)
 
-            document.getElementById("counter").innerHTML =timesClicked
+            document.getElementById("counter").innerHTML = timesClicked
             
             if(timesClicked == 9)
             {
-                console.log(clickOrder.join(" "))
+                console.log(clickOrder.join(" ")+" "+shuffledText[9])
                 console.log(correctText.join(" "))
-                if (clickOrder.join(" ") == correctText.join(" "))
-                    alert("launde!!")
+                if ((clickOrder.join(" ")+" "+shuffledText[9]) == correctText.join(" "))
+                {  console.log("correct");  correct ++}
                 else
-                    alert("dont make the same mistake your father has made")
+                    {console.log("incorrect");incorrect++}
+                totaltime = parseInt(totaltime) + time
+                console.log(totaltime)
+                time = 0
                 $(document.body).off('click');
                 resetPage(dataArray)
            }
+    }
+    else if(currentID == "pass")
+    {
+        time = 0
+        $(document.body).off('click');
+                resetPage(dataArray)
     }
         //alert(document.getElementById(currentID).innerHTML)
     })
