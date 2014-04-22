@@ -6,19 +6,45 @@
 </head>
 
 <body>
-	<a href="../../mainpage">Go Back</a>
-	<div class = "stats">
-		<div id = "counter">0</div>
-		<div id = "timer">Start</div>
+	<div id = "mainbar">
+		<h1>Gridgame</h1>
+		<a href="../../mainpage">Go Back</a>
 	</div>
-	<div class = "stats">
-  		Correct:<div id = "correct">0</div>
-  		Incorrect:<div id = "incorrect">0</div>
-  		Totaltime:<div id = "totaltime">0</div>
-  		<div id = "pass">Pass</div>
-  	</div>
-	<br>
-	<div id = "question"></div>
+	<div id = "container">
+		<div id = "question"></div>
+		<table id="table1" width="300">
+			<tr>
+				<td>Attempted</td>
+				<td><div id = "attempted">0</div></td>
+			</tr>
+			<tr>
+				<td>Correct</td>
+				<td><div id = "correct">0</div></td>
+			</tr>
+			<tr>
+				<td>Incorrect</td>
+				<td><div id = "incorrect">0</div></td>
+			</tr>
+			<tr>
+				<td>Total time</td>
+				<td><div id = "totaltime">0</div></td>
+			</tr>
+		</table>
+		<table id="table2" width="300">
+			<tr>
+				<td>Score:</td>
+				<td><div id = "counter"></div></td>
+			</tr>
+			<tr>
+				<td>Timer</td>
+				<td><div id = "time">0.00</div></td>
+			</tr>
+		</table>		
+  			<div id = "timer">Start</div>
+  			<div id = "pass">Pass</div>
+		</div>
+	</div>
+	
 	<div class="grid-container">
 		<div class="grid-row">
 			<div class="cell" id="x1"></div>
@@ -37,7 +63,7 @@
 			<div class="cell" id="x8"></div>
 			<div class="cell" id="x9"></div>
 		</div>
-	</table>
+	</div>
 	<form name = "scoreform" action="../../mainpage" method = "get" id = "form">
       <input type="hidden" name="game" value="gridgame" />
       <input type="hidden" name="score" value="0" />

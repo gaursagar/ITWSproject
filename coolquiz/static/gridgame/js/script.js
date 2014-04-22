@@ -16,7 +16,7 @@ function scoreflash()
   score = (20*correct - Math.floor(parseInt(totaltime))- 5*incorrect)
   document.scoreform.score.value = score;
   var div = document.getElementById('form')
-  div.innerHTML = div.innerHTML + '<input id="bigbutton" type="submit" value="Big Button That Needs Clicking" />YOU LOSE' 
+  div.innerHTML = div.innerHTML + '<input id="bigbutton" type="submit" value="Submit Score" />YOU LOSE' 
 }
 
 function resetPage(dataArray)
@@ -27,6 +27,9 @@ function resetPage(dataArray)
     clearInterval(window.flashfunction)
     if ((incorrect == 3) || (asked.length == dataArray.length))
         scoreflash()
+    document.getElementById('incorrect').innerHTML = incorrect
+    document.getElementById('correct').innerHTML = correct
+    document.getElementById('totaltime').innerHTML = totaltime
     document.getElementById("x1").style.background = "rgba(102, 153, 147, 0.5)"
     document.getElementById("x2").style.background = "rgba(102, 153, 147, 0.5)"
     document.getElementById("x3").style.background = "rgba(102, 153, 147, 0.5)"
@@ -91,9 +94,7 @@ function writeText(dataArray)
     shuffledText = correctText.slice(0)
     shuffledText = shuffle(shuffledText)
     console.log(shuffledText)
-    document.getElementById('incorrect').innerHTML = incorrect
-    document.getElementById('correct').innerHTML = correct
-    document.getElementById('totaltime').innerHTML = totaltime
+    document.getElementById('attempted').innerHTML = asked.length
     document.getElementById("question").innerHTML =shuffledText[9]
     document.getElementById("x1").innerHTML =shuffledText[0]
     document.getElementById("x2").innerHTML =shuffledText[1]
@@ -112,7 +113,7 @@ function writeText(dataArray)
         window.timerID = setInterval(function()
         {   
             time = ((new Date - start) / 1000).toFixed(2)
-            $('#timer').text(time);
+            $('#time').text(time);
         }, 50);
     }
 
@@ -141,9 +142,9 @@ function writeText(dataArray)
                 console.log(clickOrder.join(" ")+" "+shuffledText[9])
                 console.log(correctText.join(" "))
                 if ((clickOrder.join(" ")+" "+shuffledText[9]) == correctText.join(" "))
-                {  console.log("correct");  correct ++}
+                {  console.log("correct");  ++correct}
                 else
-                    {console.log("incorrect");incorrect++}
+                    {console.log("incorrect");++incorrect}
                 totaltime = parseInt(totaltime) + time
                 console.log(totaltime)
                 time = 0

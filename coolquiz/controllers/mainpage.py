@@ -12,10 +12,13 @@ def index():
         if gamename == 'reflect':
             db.reflect.insert(score = request.vars['score'])
         response.flash = "Progress has been saved"
-    return dict(message="hello from mainpage.py")
+    pquiz = db(db.picturequiz).select(orderby=~db.picturequiz.score)
+    ggame = db(db.gridgame).select(orderby=~db.gridgame.score)
+    rlect = db(db.reflect).select(orderby=~db.reflect.score)
+    return dict(t1 = pquiz, t2 = ggame, t3 = rlect)
 
 def scores():
-        pquiz = db(db.picturequiz).select()
-        ggame = db(db.gridgame).select()
-        rlect = db(db.reflect).select()
+        pquiz = db(db.picturequiz).select(orderby=~db.picturequiz.score)
+        ggame = db(db.gridgame).select(orderby=~db.gridgame.score)
+        rlect = db(db.reflect).select(orderby=~db.reflect.score)
         return dict(t1 = pquiz, t2 = ggame, t3 = rlect)

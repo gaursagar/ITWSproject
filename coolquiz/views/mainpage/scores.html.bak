@@ -47,13 +47,13 @@
   <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
   <script src="{{=URL('static','js/web2py_bootstrap.js')}}"></script>
     <h1>Scores</h1>
-    <b>Gridgame</b>
+    <b>Picturequiz</b>
     <table class = "scoretable" id = "table1">
     {{for row in t1:}}
     <tr><td>{{=row.username}}</td><td>{{=row.score}}</td></tr>
     {{pass}}
     </table>
-     <b>Picture Quiz</b>
+     <b>Gridgame</b>
     <table class = "scoretable" id = "table2">
     {{for row in t2:}}
     <tr><td>{{=row.username}}</td><td>{{=row.score}}</td></tr>

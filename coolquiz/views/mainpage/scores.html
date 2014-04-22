@@ -49,19 +49,19 @@
     <h1>Scores</h1>
     <b>Picturequiz</b>
     <table class = "scoretable" id = "table1">
-    {{for row in t1:}}
+    {{for row in t1[0:5]:}}
     <tr><td>{{=row.username}}</td><td>{{=row.score}}</td></tr>
     {{pass}}
     </table>
      <b>Gridgame</b>
     <table class = "scoretable" id = "table2">
-    {{for row in t2:}}
+    {{for row in t2[0:5]:}}
     <tr><td>{{=row.username}}</td><td>{{=row.score}}</td></tr>
     {{pass}}
     </table>
     <b>Reflect</b>
     <table class = "scoretable" id = "table3">
-    {{for row in t3:}}
+    {{for row in t3[0:5]:}}
     <tr><td>{{=row.username}}</td><td>{{=row.score}}</td></tr>
     {{pass}}
     </table>
