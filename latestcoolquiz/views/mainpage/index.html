@@ -1,0 +1,134 @@
+{{extend 'customlayout.html'}}
+    <div class="darkbody"></div>
+            <div id="tline"></div>
+    <div id="container">
+        <header>
+        <div id="log">
+            <a href=""><div id="logo">Cool-games</div></a>
+        </div>
+            <div id="subl">
+                <p>another place to waste time</p>
+            </div>
+            <div id="addnew">About the app</div>
+            <div id="tlast"></div>
+
+
+        </header>
+        <div id="content">
+            <div id="qs">Choose one of the following game and get started . . . </div>
+            <ul id="mainqs">
+                <li class="list" id = "grid">
+                <div id="division">
+               {{=IMG(_src=URL('static', 'mainpageImages/grid.png'), _height= "120px", _width = "120px")}}         
+                </div>
+                </li>
+
+                <li class="list" id = "quiz">
+                <div id="division">
+                {{=IMG(_src=URL('static', 'mainpageImages/quiz.png'), _height= "120px", _width = "120px")}}
+                </div>
+                </li>
+
+               <li class="list" id = "reflect">
+                <div id="division">
+                {{=IMG(_src=URL('static', 'mainpageImages/reflect.png'), _height= "120px", _width = "120px")}}
+                </div>
+                </li>
+                <li class="list" id = "stats">
+                <div id="division">
+                {{=IMG(_src=URL('static', 'mainpageImages/stats.png'), _height= "120px", _width = "120px")}}
+                </div>
+                </li>   
+                
+            </ul>
+        </div>
+        <div class="grid" >
+                    <div class="wtheadinfo">
+                    <h1>Gridgame</h1>
+                    </div>
+                    <div id="wtmain">
+                        <p>
+                            Click the grids in correct order in minimum time<br><br>
+                            <b><u>Correct:</u> seconds saved out of a 60 sec timer<br>
+                                (penalty on exceeding time limit)</b><br>
+                            <b><u>Incorrect:</u> 5 points penalty<br></b><br>
+                            <b>Game ends on attempting 10 questions or 5 incorrect<br></b>
+                        </p>
+                        <h2><a href="{{=URL('static', 'gridgame/index.html')}}">{{=IMG(_src=URL('static', 'mainpageImages/youtube1.png'), _width = "120px" , _height= "120px")}}</a></h2>
+
+                    </div>
+        </div> 
+
+        <div class="quiz" >
+                    <div class="wtheadinfo">
+                        <h1>Picture Quiz</h1>
+                    </div>
+                    <div id="wtmain">
+                        <p>
+                            Select the correct answer based on the distorted<br>image and the question<br><br>
+                            <b><u>Correct:</u> +25 points<br>
+                               <u>InCorrect:</u> -5 points<br>
+                               <u>Hint:</u> -5 points<br></b><br>
+                               <b>Game ends on attempting 10 questions or 5 incorrect<br></b>
+                        </p>
+                        <h2><a href="{{=URL('static', 'picturequiz/picturequiz.html')}}">
+                            {{=IMG(_src=URL('static', 'mainpageImages/youtube1.png'), _height= "120px", _width = "120px")}}
+                        </a></h2>
+                    </div>
+        </div>
+
+        <div class="reflect" >
+                    <div class="wtheadinfo">
+                        <h1>Reflect Game</h1>
+                    </div>
+                    <div id="wtmain">
+                        <p>Don't let the ball fall in the pit</p>
+                        <h2><a href="{{=URL('static', 'reflect/html/animate.html')}}">{{=IMG(_src=URL('static', 'mainpageImages/youtube1.png'), _height= "120px", _width = "120px")}}</a></h2>
+                    </div>
+        </div>
+
+        <div class="scores" >
+                    <div class="wtheadinfo">
+                        <h1>Top 3 Scores</h1>
+                    </div>
+                    <div id="wtmain">
+                         <b>Picturequiz</b>
+                            <table class = "scoretable" id = "table1" width = "300">
+                                {{for row in t1[0:3]:}}
+                                    <tr><td>{{=row.username}}</td><td>{{=row.score}}</td></tr>
+                                {{pass}}
+                            </table>
+                            <b>Gridgame</b>
+                            
+                            <table class = "scoretable" id = "table2" width= " 300">
+                            {{for row in t2[0:3]:}}
+                                <tr><td>{{=row.username}}</td><td>{{=row.score}}</td></tr>
+                            {{pass}}
+                            </table>
+                            
+                            <b>Reflect</b>
+                                <table class = "scoretable" id = "table3" width= "300">
+                                {{for row in t3[0:3]:}}
+                                    <tr><td>{{=row.username}}</td><td>{{=row.score}}</td></tr>
+                                {{pass}}
+                            </table>
+                    </div>
+            </div>
+        </div>
+
+        <div class="about" >
+                    <div class="wtheadinfo">
+                        <h1>ITWS-2 Project</h1>
+                    </div>
+                    <div id="wtmain">
+                        <p>Made by:<br><br><b>Anveshi Shukla - 201302035<br>Sagar Gaur - 201364127<br>Arjun Sanjeev- 201301163</p>
+                    </div>
+        </div>
+        <!--<footer>
+            <div id="footer">
+                <div id="by">sagar, anveshi, arjun</div>
+                <div id="about">What is this?</div>
+            </div>
+        </footer>-->
+<script src="{{=URL('static','libraries/jquery.js')}}"></script>
+<script src="{{=URL('static','js/mainpage.js')}}"></script>

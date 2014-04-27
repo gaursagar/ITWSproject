@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<link href='http://fonts.googleapis.com/css?family=Ceviche+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Joti+One' rel='stylesheet' type='text/css'>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Reacting to window resize events</title>
+</head>
+<body id="B">
+  <div id = "mainbar">
+    <div id="back"><a href="../../../mainpage"><img src="../../mainpageImages/back.png" width="100px" height="100px"></a></div>
+	<h1 style="font-family: 'Joti One', cursive; margin-left:520px; padding-top:-100px; margin-top:0px; font-size:50px; text-shadow: 4px 4px #0489B1;">REFLECT</h1>
+  </div>
+    <div id="box">
+    <div id="level" style="color:#A9E2F3; float:left; position:relative; margin-left:10px; margin-top:10px; font-family: 'Nova Square', cursive;"></div>
+    <div id="score" style="color:#A9E2F3; float:right; position:relative; margin-right:10px; margin-top:10px; font-family: 'Nova Square', cursive;"></div>
+    <div id="levelup" style="color:#A9E2F3; float:center; position:relative; margin-top:150px; font-family: 'Nova Square', cursive; font-size:20px; display:none;">Level Up!</div>
+    <div id="level0">
+    	
+    	<form name = "scoreform" action="../../mainpage" method = "get" id = "form">
+      		<input type="hidden" name="game" value="reflect" />
+      		<input type="hidden" name="score" value="0" />
+    	</form>
+    	
+    </div>
+    <div id="movingHorizontalDiv1" style="top:0px;left:300px;">
+	</div>
+	<div id="movingHorizontalDiv2" style="bottom:0px;left:300px;">
+	</div>
+	<div id="movingVerticalDiv1" style="top:125px;left:0px;">
+	</div>
+	<div id="movingVerticalDiv2" style="top:125px;right:0px;">
+	</div>
+    <div id="circle-blue"></div>
+    </div>
+	<input id="start" type="button" value="Start" onclick="main();" />
+	<input id="pause-resume" type="button" value="Pause" onclick="toggle();" />
+</body>
+
+<script src="../scripts/animate.js"></script>
+<link rel="stylesheet" href="../styles/style.css">
+</html>
