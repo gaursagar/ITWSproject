@@ -9,25 +9,45 @@
 </head>
 
 <body>
-	<h1>Picture Quiz</h1>
-  <a href="../../mainpage">Go Back</a>
+	<div id = "mainbar">
+    <h1>PictureQuiz</h1>
+    <div id="back"><a href="../../mainpage"><img src="../mainpageImages/back.png" width="120px" height="100px"></a></div>
+  </div>
+  <div id="cointainer">
+  <div id="pic">
+  <div id = "imagespace"></div>
+    <div id = "clear">Clear</div>
+    </div>
 	<table id = "textspace">
 		<tr id = "questionspace"></tr>
   </table>
     <table id = "options"></table>
 	</table>
-	<div id = "imagespace"></div>
-  	
-  	<div id = "clear">Clear</div>
+	
+  
   	<div class = "stats">
-  		<div id = "attempted">0</div>
-  		<div id = "correct">0</div>
-  		<div id = "score">0</div>
+    <table>
+      <tr id="row">
+      <td id="col"><div >Attempted</div></td>
+      <td id="col"><div >Correct</div></td>
+      <td id="col"><div >Score</div></td>
+      </tr>
+  		<tr id="row">
+      <td id="col"><div id = "attempted">0</div></td>
+  		<td id="col"><div id = "correct">0</div></td>
+  		<td id="col"><div id = "score">0</div></td>
+      </tr>
+      </table>
   	</div>
-    <form name = "scoreform" action="../../mainpage" method = "get" id = "form">
-      <input type="hidden" name="game" value="picturequiz" />
-      <input type="hidden" name="score" value="0" />
-    </form>
+    </div>
+    <div id="level0">
+      <div id = "l1" onclick="window.location.reload();">Play Again</div><br>
+      <form name = "scoreform" action="../../mainpage" method = "get" id = "form">
+          <input type="hidden" name="game" value="picturequiz" />
+          <input type="hidden" name="score" value="0" />
+      </form>
+      <div id = "l2" onclick="document.forms['scoreform'].submit()">Submit Score</div>
+    </div>
 </body>
 
   <script src = "js/picturequiz.js"></script>

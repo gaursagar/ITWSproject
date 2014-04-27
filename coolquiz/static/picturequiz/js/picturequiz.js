@@ -112,10 +112,9 @@ var pixelations1 =
 */
 function scoreflash()
 {
-  console.log("here")
   document.scoreform.score.value = score;
+  document.getElementById("level0").style.display = 'block';
   var div = document.getElementById('form')
-  div.innerHTML = div.innerHTML + '<input id="bigbutton" type="submit" value="Big Button That Needs Clicking" />YOU LOSE' 
 }
 
 function randomindex(dataArray)
@@ -139,7 +138,7 @@ function randomindex(dataArray)
 function resetPage(dataArray)
 {
   console.log(dataArray.length + "LENTH" + asked.length) 
-  if ((attempted - correct == 50) || (asked.length == dataArray.length-1))
+  if ((attempted - correct == 3) || (asked.length == dataArray.length-1))
   {
     //End game
     flag = 1
@@ -151,7 +150,7 @@ function resetPage(dataArray)
   score = (correct * 25) - (5 * totalhints)
   document.getElementById('score').innerHTML = score
   document.getElementById('questionspace').innerHTML = dataArray[imageNumber-1][0]
-  document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" width="550px" height="400px"/>'
+  document.getElementById('imagespace').innerHTML = '<img id="questionimage" src="img/'+imageNumber+'.jpg" width="500px" height="400px"/>'
   //console.log(imageNumber)
   document.getElementById('options').innerHTML = '<tr><div id = option1>'+dataArray[imageNumber-1][1]+'</div></tr><tr><div id = option2>'+dataArray[imageNumber-1][2]+'</div ></tr><tr><div id = option3>'+dataArray[imageNumber-1][3]+'</div ></tr><tr><div id = option4>'+dataArray[imageNumber-1][4]+'</div></tr>'
   var image = new Image()
@@ -222,6 +221,7 @@ $(document.body).click(function(evt){
 
 function readTextFile(file)
 {
+  document.getElementById('level0').style.display = 'none';
   var rawFile = new XMLHttpRequest();
   rawFile.open("GET", file, true);
   rawFile.onreadystatechange = function ()

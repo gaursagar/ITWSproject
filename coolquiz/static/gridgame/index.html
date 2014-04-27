@@ -8,43 +8,43 @@
 <body>
 	<div id = "mainbar">
 		<h1>Gridgame</h1>
-		<a href="../../mainpage">Go Back</a>
+		<div id="back"><a href="../../mainpage"><img src="../mainpageImages/back.png" height="90px"></a></div>
 	</div>
 	<div id = "container">
-		<div id = "question"></div>
+		
 		<table id="table1" width="300">
 			<tr>
-				<td>Attempted</td>
-				<td><div id = "attempted">0</div></td>
+				<td id="rig">Attempted ::</td>
+				<td><div id = "attempted" class="val">0</div></td>
+			
+				<td id="rig">Correct ::</td>
+				<td><div id = "correct" class="val">0</div></td>
 			</tr>
 			<tr>
-				<td>Correct</td>
-				<td><div id = "correct">0</div></td>
-			</tr>
-			<tr>
-				<td>Incorrect</td>
-				<td><div id = "incorrect">0</div></td>
-			</tr>
-			<tr>
-				<td>Total time</td>
-				<td><div id = "totaltime">0</div></td>
+			<td  id="rig">Total-time ::</td>
+				<td><div id = "totaltime" class="val">0</div></td>
+				<td id="rig">Incorrect ::</td>
+				<td><div id = "incorrect" class="val">0</div></td>
+				
 			</tr>
 		</table>
-		<table id="table2" width="300">
-			<tr>
-				<td>Score:</td>
-				<td><div id = "counter"></div></td>
-			</tr>
-			<tr>
-				<td>Timer</td>
-				<td><div id = "time">0.00</div></td>
-			</tr>
-		</table>		
-  			<div id = "timer">Start</div>
-  			<div id = "pass">Pass</div>
-		</div>
-	</div>
+		<div id="counter" ></div>
+		<table id="table2">
+		<tr>
+			<td id="rig">Time elapsed</td>
+			<td><div id="time">0</div></td>
+		<tr>
+		</table>	
+		
 	
+  		<table id="table3">
+  			<tr>
+  				<td id="ps"><div id = "pass">Pass</div></td>
+  				<td id="ps"><div id="timer">start</div></td>
+  			</tr>
+  		</table>  		
+		<div id = "question">Click on the start button to get new Question</div>
+</div>
 	<div class="grid-container">
 		<div class="grid-row">
 			<div class="cell" id="x1"></div>
@@ -64,12 +64,18 @@
 			<div class="cell" id="x9"></div>
 		</div>
 	</div>
-	<form name = "scoreform" action="../../mainpage" method = "get" id = "form">
-      <input type="hidden" name="game" value="gridgame" />
-      <input type="hidden" name="score" value="0" />
-    </form>
+    <div id="level0">
+    	<div id = "l1" onclick="window.location.reload();">Play Again</div><br>
+    	<form name = "scoreform" action="../../mainpage" method = "get" id = "form">
+      		<input type="hidden" name="game" value="gridgame" />
+      		<input type="hidden" name="score" value="0" />
+    	</form>
+    	<div id = "l2" onclick="document.forms['scoreform'].submit()">Submit Score</div>
+    </div>
 </body>
   <script src='../libraries/jquery.js'></script>
   <script src='../libraries/jquery-csv.js'></script>
   <script src = 'js/script.js'></script>
-</HTML>
+</html>
+    
+</html>

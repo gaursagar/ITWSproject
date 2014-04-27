@@ -3,8 +3,8 @@
             <div id="tline"></div>
     <div id="container">
         <header>
-        <div>
-            <a href=""><div id="logo">THE gameS</div></a>
+        <div id="log">
+            <a href=""><div id="logo">Cool-games</div></a>
         </div>
             <div id="subl">
                 <p>another place to waste time</p>
@@ -15,7 +15,7 @@
 
         </header>
         <div id="content">
-            <div id="qs"></div>
+            <div id="qs">Choose one of the following game and get started . . . </div>
             <ul id="mainqs">
                 <li class="list" id = "grid">
                 <div id="division">
@@ -52,7 +52,8 @@
                             <b><u>Correct:</u> seconds saved out of a 20 sec timer<br>
                                 (penalty on exceeding time limit)</b>
                         </p>
-                        <h2><a href="{{=URL('static', 'gridgame/index.html')}}">Play</a></h2>
+                        <h2><a href="{{=URL('static', 'gridgame/index.html')}}">{{=IMG(_src=URL('static', 'mainpageImages/youtube1.png'), _width = "120px" , _height= "120px")}}</a></h2>
+
                     </div>
         </div> 
 
@@ -67,7 +68,9 @@
                                <u>InCorrect:</u> -5 points<br>
                                <u>Hint:</u> -5 points<br></b>
                         </p>
-                        <h2><a href="{{=URL('static', 'picturequiz/picturequiz.html')}}">Play</a></h2>
+                        <h2><a href="{{=URL('static', 'picturequiz/picturequiz.html')}}">
+                            {{=IMG(_src=URL('static', 'mainpageImages/youtube1.png'), _height= "120px", _width = "120px")}}
+                        </a></h2>
                     </div>
         </div>
 
@@ -77,7 +80,7 @@
                     </div>
                     <div id="wtmain">
                         <p>Don't let the ball fall in the pit</p>
-                        <h2><a href="{{=URL('static', 'reflect/html/animate.html')}}">Play</a></h2>
+                        <h2><a href="{{=URL('static', 'reflect/html/animate.html')}}">{{=IMG(_src=URL('static', 'mainpageImages/youtube1.png'), _height= "120px", _width = "120px")}}</a></h2>
                     </div>
         </div>
 
@@ -119,72 +122,7 @@
                         <p><a href="{{=URL('static', 'reflect/html/animate.html')}}">Play</a></p>
                     </div>
         </div>
-       <!-- <div id="content">
-        	<div id="qs">Choose one of the following game and get started . . . </div>
-        	<ul id="mainqs">
-        		<li class="list">
-        			<div class="ans">
-        				<span><img src="img/mario.jpeg" width="65px"/></span>
-                        <span class="anstext"><a href="{{=URL('static', 'picturequiz/picturequiz.html')}}">Picture Quiz</a></span>
-        			</div>
-        		</li>
-        		<li class="list">
-        			<div class="ans">
-        				<span></span>
-                        <span class="anstext"><a href="{{=URL('static', 'gridgame/index.html')}}">Grid Game</a></span>
-        			</div>
-        		</li>
-        		<li class="list">
-        			<div class="ans">
-        				<span></span>
-                        <span class="anstext"><a href="{{=URL('static', 'reflect/html/animate.html')}}">Reflect</a></span>
-        			</div>
-        		</li>
-        		<li class="list">
-        			<div class="ans">
-        				<span></span>
-                        <span class="anstext"><a href="{{=URL('scores.html')}}">Scores</a></span>
-        			</div>
-        		</li>
-        		<li class="list" id="talk">
-        			<div class="ans">
-        				<span></span>
-        				<span class="anstext">Pahchan kaun?</span>
-        			</div>
-        		</li>
-        		<li class="list">
-                    <div class="ans">
-                        <span></span>
-                        <span class="anstext">Sudoku</span>
-                    </div>
-                </li>  
-        	</ul>
-        </div>
-      
-        <div class="whatsthis" >
-                <div class="wtheadinfo">
-                    <h1>What is this?</h1>
-                </div>
-                <div id="wtmain">
-                    <p>
-                        what is this app about..still to be written.
-                    </p>
-                    <p><a href="http://google.com" target="_blank">link to google</a></p>
-                </div>
-        </div>
-  
-
-        <div class="requestform">
-                <div class="wtheadinfo">
-                    <h1>How to play</h1>
-                </div>
-                <div id="wtmain">
-                    <p>here i will write how to play these games<br></p>
-                    <p><a href="http://google.com" target="_blank">link to google</a></p>
-                </div>
-         </div>
-     
-        <footer>
+        <!--<footer>
             <div id="footer">
                 <div id="by">sagar, anveshi, arjun</div>
                 <div id="about">What is this?</div>

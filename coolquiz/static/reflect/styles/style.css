@@ -48,9 +48,10 @@
 }
 
 #start {
+	display:block;
 	position: absolute;
     margin-top:10px;
-    margin-left:420px;
+    margin-left:547px;
     background-color: #A9E2F3;
 	border-radius: 50%;
 	border-color: #01A9DB;
@@ -68,10 +69,11 @@
 }
 
 #pause-resume {
+	display:none;
 	position: absolute;
     margin-top:10px;
-    margin-left:675px;
-    background-color: #A9E2F3;
+    margin-left:547px;
+    background: #A9E2F3;
 	border-radius: 50%;
 	border-color: #01A9DB;
 	border-width: 10px;
@@ -92,13 +94,13 @@
 	background-color:#01A9DB;
 	border-color:#A9E2F3;
 	font-size:2.2em;
+	margin-left:543px;
 }
 
 #pause-resume:hover
 {
-	background-color:#01A9DB;
-	border-color:#A9E2F3;
 	font-size:2.2em;
+	margin-left:543px;
 }
 
 #level0 {
@@ -109,8 +111,9 @@
     position: relative;
     top: 50%; 
     left: 50%;
+    float:left;
     margin-top: -100px;
-    margin-left: -150px;
+    margin-left: -225px;
     background-color: #01A9DB;
     border-radius: 5px;
    	font-family: 'Ceviche One', cursive;

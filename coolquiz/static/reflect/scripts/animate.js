@@ -7,14 +7,14 @@
 	var flag;
 	var flag1;
 	var flag2;
-	var count;
+	var count=0;
 	var moveHorizontalDiv1;
 	var moveHorizontalDiv2;
 	var moveVerticalDiv1;
 	var moveVerticalDiv2;
 	var flagPause;
-	var mult;
-	var flag3;
+	var mult=2;
+	var flag3=0;
 	var high=0;
 
 function init() {
@@ -32,19 +32,20 @@ function init() {
 	flag1=0;
 	flag2=0;
 	flag3=0;
-	count=0;
 	moveHorizontalDiv1 = document.getElementById("movingHorizontalDiv1");
 	moveHorizontalDiv2 = document.getElementById("movingHorizontalDiv2");
 	moveVerticalDiv1 = document.getElementById("movingVerticalDiv1");
 	moveVerticalDiv2 = document.getElementById("movingVerticalDiv2");
 	flagPause=0;
-	mult=2;
 }
 
 function check() {
+	flag3=1;
     var div = document.getElementById("level0");
     div.innerHTML = "<br>Score :<br>" + count + "<br><br><a style='display:block' href=''><div id='xyz' onclick='animateBlueCircle();'>Play Again</div></a><br>";
     document.getElementById("level0").style.display = 'block';
+    document.getElementById("start").style.display = 'none';
+    document.getElementById("pause-resume").style.display = 'none';
     if(high<count) high=count;
     console.log(high);
 }
@@ -53,6 +54,8 @@ function animateBlueCircle()
 {
 	var div = document.getElementById("score");
     div.innerHTML = "Score : " + count;
+    var div = document.getElementById("level");
+    div.innerHTML = "Level : " + Math.floor(count/10+1);
     var circle = document.getElementById("circle-blue")
     var pos = turns * mult  
     var cw = circle.scrollWidth
@@ -69,14 +72,32 @@ function animateBlueCircle()
     	else if(pos + cw + 6 >= ww)
     	{
     		if(((parseInt(moveVerticalDiv2.style.top, 10)<=pos1) && (parseInt(moveVerticalDiv2.style.top, 10)+150>=pos1)))
-        	{flag=1; flag1=0; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+        	{
+        		flag=1; flag1=0; count++; 
+        		if(count!=0 && count%10==0) 
+        		{
+        			document.getElementById("circle-blue").style.display = 'none';
+	        		document.getElementById("levelup").style.display = 'block';
+	        		setTimeout(function(){document.getElementById("levelup").style.fontSize = '25px';setTimeout(function(){document.getElementById("levelup").style.fontSize = '30px';setTimeout(function(){document.getElementById("levelup").style.display = 'none';document.getElementById("levelup").style.fontSize = '20px';init();mult+=0.4;document.getElementById("circle-blue").style.display = 'block';},333);},333);},333);	        		
+        		} 
+        	if(flag2==0) animateBlueCircle();
+        	}
         	else
 	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
 	    }
 	    else
 	    {
 	    	if(((parseInt(moveHorizontalDiv2.style.left, 10)<=pos) && (parseInt(moveHorizontalDiv2.style.left, 10)+150>=pos)))
-	    	{flag=0; flag1=1; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	    	{	
+	    		flag=0; flag1=1; count++; 
+	    		if(count!=0 && count%10==0) 
+	    		{
+	    			document.getElementById("circle-blue").style.display = 'none';
+	        		document.getElementById("levelup").style.display = 'block';
+	        		setTimeout(function(){document.getElementById("levelup").style.fontSize = '25px';setTimeout(function(){document.getElementById("levelup").style.fontSize = '30px';setTimeout(function(){document.getElementById("levelup").style.display = 'none';document.getElementById("levelup").style.fontSize = '20px';init();mult+=0.4;document.getElementById("circle-blue").style.display = 'block';},333);},333);},333);
+	    		} 
+	    	if(flag2==0) animateBlueCircle();
+	    	}
 	    	else
 	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
 	    }
@@ -90,14 +111,32 @@ function animateBlueCircle()
 	    else if(pos1 + cw + 6 >= wh)
 	    {
 	    	if(((parseInt(moveHorizontalDiv2.style.left, 10)<=pos) && (parseInt(moveHorizontalDiv2.style.left, 10)+150>=pos)))
-	        {flag=1; flag1=1; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	        {
+	        	flag=1; flag1=1; count++; 
+	        	if(count!=0 && count%10==0) 
+	        	{
+	        		document.getElementById("circle-blue").style.display = 'none';
+	        		document.getElementById("levelup").style.display = 'block';
+	        		setTimeout(function(){document.getElementById("levelup").style.fontSize = '25px';setTimeout(function(){document.getElementById("levelup").style.fontSize = '30px';setTimeout(function(){document.getElementById("levelup").style.display = 'none';document.getElementById("levelup").style.fontSize = '20px';init();mult+=0.4;document.getElementById("circle-blue").style.display = 'block';},333);},333);},333);
+	        	} 
+	        if(flag2==0) animateBlueCircle();
+	        }
 	        else
 	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
 	    }
 	    else
 	    {
 	    	if(((parseInt(moveVerticalDiv1.style.top, 10)<=pos1) && (parseInt(moveVerticalDiv1.style.top, 10)+150>=pos1)))
-	    	{flag=0; flag1=0; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	    	{
+	    		flag=0; flag1=0; count++; 
+	    		if(count!=0 && count%10==0) 
+	    		{
+	    			document.getElementById("circle-blue").style.display = 'none';
+	        		document.getElementById("levelup").style.display = 'block';
+	        		setTimeout(function(){document.getElementById("levelup").style.fontSize = '25px';setTimeout(function(){document.getElementById("levelup").style.fontSize = '30px';setTimeout(function(){document.getElementById("levelup").style.display = 'none';document.getElementById("levelup").style.fontSize = '20px';init();mult+=0.4;document.getElementById("circle-blue").style.display = 'block';},333);},333);},333);
+	    		} 
+	    		if(flag2==0) animateBlueCircle();
+	    		}
 	    	else
 	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
 	    }
@@ -111,14 +150,32 @@ function animateBlueCircle()
 	    else if(pos <= 6)
 	    {
 	    	if(((parseInt(moveVerticalDiv1.style.top, 10)<=pos1) && (parseInt(moveVerticalDiv1.style.top, 10)+150>=pos1)))
-	        {flag=0; flag1=1; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	        {
+	        	flag=0; flag1=1; count++; 
+	        	if(count!=0 && count%10==0) 
+	        	{
+	        		document.getElementById("circle-blue").style.display = 'none';
+	        		document.getElementById("levelup").style.display = 'block';
+	        		setTimeout(function(){document.getElementById("levelup").style.fontSize = '25px';setTimeout(function(){document.getElementById("levelup").style.fontSize = '30px';setTimeout(function(){document.getElementById("levelup").style.display = 'none';document.getElementById("levelup").style.fontSize = '20px';init();mult+=0.4;document.getElementById("circle-blue").style.display = 'block';},333);},333);},333);
+	        	} 
+	        	if(flag2==0) animateBlueCircle();
+	        	}
 	        else
 	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
 	    }
 	    else
 	    {
 	    	if(((parseInt(moveHorizontalDiv1.style.left, 10)<=pos) && (parseInt(moveHorizontalDiv1.style.left, 10)+150>=pos)))
-	    	{flag=1; flag1=0; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	    	{
+	    		flag=1; flag1=0; count++; 
+	    		if(count!=0 && count%10==0) 
+	    		{
+	    			document.getElementById("circle-blue").style.display = 'none';
+	        		document.getElementById("levelup").style.display = 'block';
+	        		setTimeout(function(){document.getElementById("levelup").style.fontSize = '25px';setTimeout(function(){document.getElementById("levelup").style.fontSize = '30px';setTimeout(function(){document.getElementById("levelup").style.display = 'none';document.getElementById("levelup").style.fontSize = '20px';init();mult+=0.4;document.getElementById("circle-blue").style.display = 'block';},333);},333);},333);
+	    		} 
+	    		if(flag2==0) animateBlueCircle();
+	    		}
 	    	else
 	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
 	    }
@@ -132,14 +189,32 @@ function animateBlueCircle()
 	    else if(pos1 <= 6)
 	    {
 	    	if(((parseInt(moveHorizontalDiv1.style.left, 10)<=pos) && (parseInt(moveHorizontalDiv1.style.left, 10)+150>=pos)))
-	        {flag=0; flag1=0; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	        {	
+	        	flag=0; flag1=0; count++; 
+	        	if(count!=0 && count%10==0) 
+	        	{
+	        		document.getElementById("circle-blue").style.display = 'none';
+	        		document.getElementById("levelup").style.display = 'block';
+	        		setTimeout(function(){document.getElementById("levelup").style.fontSize = '25px';setTimeout(function(){document.getElementById("levelup").style.fontSize = '30px';setTimeout(function(){document.getElementById("levelup").style.display = 'none';document.getElementById("levelup").style.fontSize = '20px';init();mult+=0.4;document.getElementById("circle-blue").style.display = 'block';},333);},333);},333);
+	        	} 
+	        	if(flag2==0) animateBlueCircle();
+	        	}
 	        else
 	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
 	    }
 	    else
 	    {
 	    	if(((parseInt(moveVerticalDiv2.style.top, 10)<=pos1) && (parseInt(moveVerticalDiv2.style.top, 10)+150>=pos1)))
-	    	{flag=1; flag1=1; count++; if(count%5==0) flag3=1; if(flag2==0) animateBlueCircle();}
+	    	{
+	    		flag=1; flag1=1; count++; 
+	    		if(count!=0 && count%10==0) 
+	    		{
+	    			document.getElementById("circle-blue").style.display = 'none';
+	        		document.getElementById("levelup").style.display = 'block';
+	        		setTimeout(function(){document.getElementById("levelup").style.fontSize = '25px';setTimeout(function(){document.getElementById("levelup").style.fontSize = '30px';setTimeout(function(){document.getElementById("levelup").style.display = 'none';document.getElementById("levelup").style.fontSize = '20px';init();mult+=0.4;document.getElementById("circle-blue").style.display = 'block';},333);},333);},333);
+	    		} 
+	    		if(flag2==0) animateBlueCircle();
+	    		}
 	    	else
 	    	{document.getElementById("circle-blue").style.display = 'none'; check();}
 	    }
@@ -157,9 +232,54 @@ function animate() {
 
 function main() {
 	init();
+	document.getElementById("start").style.display = 'none';
+	document.getElementById("pause-resume").style.display = 'block';
 	document.getElementById("circle-blue").style.display = 'block';
     if (window.requestAnimationFrame) requestAnimationFrame(animate)
 }
+flag4 = 0
+function changecolor() {
+	if (flag4%2)
+	{
+		document.getElementById("pause-resume").style.background = "#01A9DB";
+		document.getElementById("pause-resume").style.borderColor = "#A9E2F3";
+	}
+	else
+	{	
+		document.getElementById("pause-resume").style.background = "#A9E2F3";
+		document.getElementById("pause-resume").style.borderColor = "#01A9DB";	
+	}
+	flag4++
+}
+
+var myVar;
+
+function stopFunction() {
+	clearInterval(myVar);
+}
+
+function toggle() {
+	if(flag2==0) 
+	{	
+		document.getElementById("pause-resume").style.background = "#01A9DB";
+		document.getElementById("pause-resume").style.borderColor = "#A9E2F3";
+		myVar=setInterval(function(){changecolor();},1000);
+		document.getElementById("pause-resume").value='Resume'; 
+		document.getElementById("pause-resume").style.padding = "33px 10px 33px 10px";
+		flag2=1;
+	} 
+	else 
+	{	
+		flag4=0;
+		stopFunction();
+		document.getElementById("pause-resume").style.background = "#A9E2F3";
+		document.getElementById("pause-resume").style.borderColor = "#01A9DB";
+		document.getElementById("pause-resume").value='Pause'; 
+		document.getElementById("pause-resume").style.padding = "33px 25px 33px 25px";
+		flag2=0; 
+		animateBlueCircle();
+	}
+}		
 
 window.onload = function () {
 			
@@ -178,6 +298,8 @@ window.onload = function () {
 				} else {
 					keyCode = e.keyCode;
 				}
+			if(keyCode === 13) {if(flag3==0) main(); else animateBlueCircle();}
+			if(keyCode === 16) toggle(); // Right-shift to pause-resume
 			if(flag2==0)
 			{
 		//increment/decrement the top or left of the div based on the arrow key movements
@@ -197,19 +319,3 @@ window.onload = function () {
 			}
 			};
 		};
-
-function toggle() {
-	if(flag2==0) 
-	{
-		document.getElementById("pause-resume").value='Resume'; 
-		document.getElementById("pause-resume").style.padding = "33px 10px 33px 10px";
-		flag2=1;
-	} 
-	else 
-	{
-		document.getElementById("pause-resume").value='Pause'; 
-		document.getElementById("pause-resume").style.padding = "33px 25px 33px 25px";
-		flag2=0; 
-		animateBlueCircle();
-	}
-}		

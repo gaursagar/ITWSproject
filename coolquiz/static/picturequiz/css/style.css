@@ -1,32 +1,160 @@
+@font-face
+{
+font-family: cartoon;
+src: url(../../fonts/cartoon/cartoon.ttf);
+}
+@font-face
+{
+font-family: facebook;
+src: url(../../fonts/facebook/facebook.ttf);
+}
+@font-face
+{
+font-family: transfer;
+src: url(../../fonts/transfer/transfer.ttf);
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
-  background: #111111;
-  color: #FFFFFF;
-  font-family:  'Tamoha', 'Hoefler Text', Georgia, 'Times New Roman', serif;
-  font-size: 25px;
-  letter-spacing: .2em;
-  line-height: 1.1em;
-  font-weight: 900;
-  margin:0px;
   text-align: center;
+}
+body{
+  background:url("../../mainpageImages/body.jpg") center no-repeat rgba(43, 88, 107, 0.5);
+  background-size:cover;height:100%;
+  opacity:1;
+}
+#mainbar{
+  font-family: facebook;
+  background-color: black;
+  color: white;
+  padding:5px;
+}
+#container{
+  overflow: hidden;
+}
+#back{
+  position:absolute;
+  top:0px;
 }
 
 #textspace {
-  background: rgba(102, 153, 147, 0.5);
-    justify-content: left; /* align horizontal */
-    align-items: left; /* align vertical */
-    overflow:hidden;
-    font-weight: 900;
+  background:rgba(65, 118, 187, 0.8);font-size: 30px;font-weight: 10;position:relative;
+  margin-left: 20px;margin-top:50px;border:solid 5px black;padding-left: 20px;
+  min-width: 1000px;
+ 
 }
 
 #options {
-  background: rgba(1, 1, 1, 0.5);
-    justify-content: left; /* align horizontal */
-    align-items: left; /* align vertical */
-    font-weight: 900;
+ 
+  background-color: rgba(65, 118, 187, 0.8);
+  font-size: 30px;font-weight: 10;margin-left: 20px;margin-top:10px;border:solid 5px black;
+  min-width: 1000px;padding-left: 20px;
 }
 
-#questionimage {
-  
+
+#imagespace{
+  position: relative;
+  float:right;
+  top: 20px;
+  margin-right: 20px;
+  width: 500px;
+  height: 400px;
+  border:solid 10px rgba(8, 51, 107, 0.8) ;
+  border-radius: 20px;
+  text-align: center;
+
+}
+#option1:hover{
+  opacity:0.5;
+  background-color: #007FB4;
+  cursor:pointer;
+}
+#option2:hover{
+  opacity:0.5;
+  background-color: #007FB4;
+  cursor:pointer;
+}
+#option3:hover{
+  opacity:0.5;
+  background-color: #007FB4;
+  cursor:pointer;
+}
+#option4:hover{
+  opacity:0.5;
+  background-color:#007FB4;
+  cursor:pointer;
+}
+
+
+#clear{
+  background-color:green;
+  padding: 10px;
+  color: white;
+  opacity:1;
+  position: absolute;
+  float: right;
+  right: 220px;
+  top :600px;
+  padding-right: 30px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  padding-left: 30px;
+  border:solid;
+  border-radius: 20px;
+  font-size: 40px;
+  cursor: pointer;
+  font-weight: 50;
+}
+#clear:hover{
+
+  opacity: 0.6;
+}
+.stats{
+  background-color: rgba(65, 118, 187, 0.8);
+  font-size: 35px;
+  font-weight:300;
+  width:1000px;
+  margin: 20px;
+  border:solid;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+#col{
+  min-width:333px;
+  padding: 10px;
+  text-align: center;
+  font-size: 35px;
+  @font-family: co 
+}
+
+#level0{
+    text-align: center;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:30em;
+    height:15em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 10px solid rgba(102, 153, 147, 0.5);
+    background: rgba(8, 51, 107, 0.8);
+}
+
+#l1, #l2{
+  font-family: sans-serif;
+  width:70%;
+  float:center;
+  font-size:35px;
+  margin: 0 auto;
+  margin-top:30px;
+  background-color: rgba(102, 153, 147, 0.5);
+  border:solid rgba(102, 153, 147, 1); 
+  border-radius: 5px;
+}
+
+#l1:hover, #l2:hover{
+  opacity: 0.7;
+  cursor: pointer;
 }

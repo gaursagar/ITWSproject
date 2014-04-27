@@ -1,17 +1,37 @@
-html, body, div,em, ol, ul, li,footer, header
+@font-face
+{
+font-family: cartoon;
+src: url(../fonts/cartoon/cartoon.ttf);
+}
+@font-face
+{
+font-family: facebook;
+src: url(../fonts/facebook/facebook.ttf);
+}
+@font-face
+{
+font-family: transfer;
+src: url(../fonts/transfer/transfer.ttf);
+}
+
+html, body, div,em, ol, ul, li,footer
 {
     margin: 0;padding: 0;
     border: 0;outline: 0;
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
+    
 }
-
+h2
+{
+	text-align: center;
+}
 body
 {
-	background:url("../mainpageImages/bg3.jpg") center no-repeat rgba(43, 88, 107, 0.5);
+	background:url("../mainpageImages/body.jpg") center no-repeat rgba(43, 88, 107, 0.5);
 	background-size:cover;height:100%;
-	opacity:0;
+	opacity:0.5;
 }
 
 .darkbody
@@ -26,13 +46,13 @@ a
 {
 	color:#82c5e1;
 	text-decoration:none;
+	opacity:.7;
 }
 
 a:hover
 {
-	color:##F5746C;
-	opacity:.8;
-	border-bottom:1px dotted #6caac5;
+	color:#F5746C;
+	opacity:1;
 	padding-bottom:1px;
 }
 
@@ -55,10 +75,14 @@ header
 	height:10px;
 	background:rgba(43,88,107,0.5);
 }
+#log{
+	mar
+}
 #logo
 {
+	font-family: facebook;
 	margin: 10px auto;
-	font-size: 32px;
+	font-size: 60px;
 	font-weight:20px;
 	color:#F5746C;
 	text-shadow:2px 2px 0 #0b3141;
@@ -226,6 +250,8 @@ footer #about
 }
 #qs
 {
+	font-family: facebook;
+	font-weight: 20;
 	float:left;
 	margin-top:10px;
 	background:rgba(43,88,107,0.5);
